@@ -9,6 +9,7 @@ import {
   useUsuariosStore,
   Login,
   SpinnerLoader,
+  Fondo1,
 } from "./index";
 import { useLocation } from "react-router-dom";
 import { createContext, useState } from "react";

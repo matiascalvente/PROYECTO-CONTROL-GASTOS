@@ -20,6 +20,7 @@ export function MyRoutes() {
         <Route path="/categorias" element={<Categorias />} />
         <Route path="/movimientos" element={<Movimientos />} />
         <Route path="/informes" element={<Informes />} />
+        <Route path="/acercade" element={<Home />} />
       </Route>
     </Routes>
   );

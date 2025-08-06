@@ -50,7 +50,6 @@ export async function MostrarMovimientosPorMesAño(p) {
     return data;
   } catch (error) {}
 }
-
 export async function RptMovimientosPorMesAño(p) {
   try {
     const { data } = await supabase.rpc("rptmovimientos_anio_mes", {

@@ -15,7 +15,7 @@ import { useState } from "react";
 import dayjs from "dayjs";
 export function InformesTemplate() {
   const {
-    setTipo,
+    setTipoMovimientos,
     tipo,
     colorCategoria,
     año,
@@ -38,7 +38,7 @@ export function InformesTemplate() {
     setdataSelect([]);
   }
   function cambiarTipo(p) {
-    setTipo(p);
+    setTipoMovimientos(p);
     setStateTipo(!stateTipo);
     setState(false);
   }
@@ -77,7 +77,7 @@ export function InformesTemplate() {
         <CalendarioLineal
           value={value}
           setValue={setValue}
-          formatoFecha={formatoFecha}
+          formatofecha={formatoFecha}
           setFormatoFecha={setFormatoFecha}
         />
       </section>
@@ -102,30 +102,30 @@ const Container = styled.div`
 
   .header {
     grid-area: header;
-    //    background-color: rgba(103, 93, 241, 0.14);
+    //  background-color: rgba(103, 93, 241, 0.14);
     display: flex;
     align-items: center;
   }
   .area1 {
     grid-area: area1;
-    //    background-color: rgba(229, 67, 26, 0.14);
+    //  background-color: rgba(229, 67, 26, 0.14);
     display: flex;
     gap: 20px;
     align-items: center;
   }
   .area2 {
     grid-area: area2;
-    //    background-color: rgba(77, 237, 106, 0.14);
+    // background-color: rgba(77, 237, 106, 0.14);
     display: flex;
     align-items: center;
     justify-content: center;
+    padding-bottom: 20px;
   }
   .main {
     grid-area: main;
-    //    background-color: rgba(179, 46, 241, 0.14);
+    // background-color: rgba(179, 46, 241, 0.14);
   }
 `;
-
 const ContentFiltro = styled.div`
   display: flex;
   flex-wrap: wrap;

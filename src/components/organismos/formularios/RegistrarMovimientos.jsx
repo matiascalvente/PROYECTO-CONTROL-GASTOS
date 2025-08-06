@@ -26,7 +26,7 @@ export function RegistrarMovimientos({ setState, state, dataSelect, accion }) {
   const [estado, setEstado] = useState(true);
   const [ignorar, setIgnorar] = useState(false);
   const [stateCategorias, setStateCategorias] = useState(false);
-
+  const fechaactual = new Date();
   const {
     register,
     formState: { errors },
@@ -73,7 +73,7 @@ export function RegistrarMovimientos({ setState, state, dataSelect, accion }) {
             <h1>Nuevo {tipo == "i" ? "ingreso" : "gasto"}</h1>
           </div>
           <div>
-            <span onClick={close}>{<v.iconocerrar />}</span>
+            <span onClick={setState}>{<v.iconocerrar />}</span>
           </div>
         </div>
 
@@ -104,6 +104,7 @@ export function RegistrarMovimientos({ setState, state, dataSelect, accion }) {
               <label>Fecha:</label>
 
               <input
+                defaultValue={fechaactual.toJSON().slice(0, 10)}
                 type="date"
                 {...register("fecha", { required: true })}
               ></input>

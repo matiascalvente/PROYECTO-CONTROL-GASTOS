@@ -25,7 +25,9 @@ export function Tabs() {
       {
         tension: 0.3,
         fill: true,
-        label: "total",
+        label: "Total",
+        borderRadius: 5,
+        cutout: 30,
         minBarLength: "100px",
         data: dataRptMovimientosAñoMes?.map((item) => item.total),
         backgroundColor: [
@@ -45,8 +47,8 @@ export function Tabs() {
           "rgba(255, 159, 64, 1)",
         ],
         borderWidth: 2,
-        hoverOffset: 12,
-        //offset: 10,
+        hoverOffset: 16,
+        offset: 10,
       },
     ],
   };

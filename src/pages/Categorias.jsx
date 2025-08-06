@@ -8,6 +8,7 @@ import {
   Lottieanimacion,
 } from "../index";
 import { useQuery } from "@tanstack/react-query";
+
 export function Categorias() {
   const { tipo } = useOperaciones();
   const { datacategoria, mostrarCategorias } = useCategoriasStore();

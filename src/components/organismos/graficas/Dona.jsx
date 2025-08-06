@@ -1,13 +1,15 @@
 import styled from "styled-components";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
-import { Pie } from "react-chartjs-2";
+import { Doughnut } from "react-chartjs-2";
 ChartJS.register(ArcElement, Tooltip, Legend);
-
 export function Dona({ datagrafica, data, titulo }) {
+  const style = {
+    width: "400px",
+  };
   return (
     <Container>
       <section>
-        <Pie data={datagrafica} />
+        <Doughnut data={datagrafica} style={style} />
       </section>
       <section>
         <h2>{titulo} por categoria</h2>
@@ -31,7 +33,6 @@ const Container = styled.div`
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-
   gap: 18px;
 `;
 const ContentCars = styled.div`

@@ -7,6 +7,7 @@ import {
   LineElement,
   Title,
   Tooltip,
+  Filler,
   Legend,
 } from "chart.js";
 import { Line } from "react-chartjs-2";
@@ -17,13 +18,17 @@ ChartJS.register(
   LineElement,
   Title,
   Tooltip,
+  Filler,
   Legend
 );
 export function Lineal({ datagrafica, data, titulo }) {
+  const style = {
+    width: "400px",
+  };
   return (
     <Container>
       <section>
-        <Line data={datagrafica} />
+        <Line data={datagrafica} style={style} />
       </section>
       <section>
         <h2>{titulo} por categoria</h2>

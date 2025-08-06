@@ -11,12 +11,12 @@ export function HomeTemplate() {
         <Title>
           Bienvenido a FinTrack <br />
         </Title>
-        <Subtext>
+        <SubText>
           FinTrack nace por las pocas aplicaciones gratis que existen para
           controlar gastos e ingresos.
           <br />
           <br /> MUCHAS GRACIAS POR APOYAR ESTE PROYECTO
-        </Subtext>
+        </SubText>
       </Container>
     </Main>
   );
@@ -38,8 +38,8 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  text-align: center;
 `;
-
 const Box = styled.div`
   width: 50%;
   height: 100%;
@@ -72,7 +72,7 @@ const Title = styled.h2`
     font-size: ${(props) => props.theme.fontlg};
   }
 `;
-const Subtext = styled.p`
+const SubText = styled.p`
   font-size: ${(props) => props.theme.fontlg};
   color: #8e8c86;
   align-self: flex-start;

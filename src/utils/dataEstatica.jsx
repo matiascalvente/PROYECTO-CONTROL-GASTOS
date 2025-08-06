@@ -77,11 +77,11 @@ export const LinksArray = [
     icon: <MdOutlineAnalytics />,
     to: "/informes",
   },
-  {
-    label: "Dashboard",
-    icon: <RiDashboard3Line />,
-    to: "/dashboard",
-  },
+  // {
+  //   label: "Dashboard",
+  //   icon: <RiDashboard3Line />,
+  //   to: "/dashboard",
+  // },
 ];
 export const SecondarylinksArray = [
   {
@@ -92,7 +92,7 @@ export const SecondarylinksArray = [
   {
     label: "Acerca de",
     icon: <TbPig />,
-    to: "/",
+    to: "/acercade",
   },
 ];
 //temas

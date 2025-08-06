@@ -19,7 +19,7 @@ import {
 } from "../../index";
 import { Device } from "../../styles/breakpoints";
 import dayjs from "dayjs";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 export function MovimientosTemplate() {
   const [dataSelect, setdataSelect] = useState([]);
@@ -30,7 +30,7 @@ export function MovimientosTemplate() {
   const [state, setState] = useState(false);
   const [stateTipo, setStateTipo] = useState(false);
   const {
-    setTipo,
+    setTipoMovimientos,
     tipo,
     colorCategoria,
     año,
@@ -39,6 +39,7 @@ export function MovimientosTemplate() {
     tituloBtnDes,
     tituloBtnDesMovimientos,
   } = useOperaciones();
+  useEffect(() => {}, []);
   const { idusuario } = useUsuariosStore();
   const {
     totalMesAño,
@@ -54,7 +55,7 @@ export function MovimientosTemplate() {
     setState(false);
   }
   function cambiarTipo(p) {
-    setTipo(p);
+    setTipoMovimientos(p);
     setStateTipo(!stateTipo);
     setState(false);
   }
@@ -75,12 +76,12 @@ export function MovimientosTemplate() {
         idusuario: idusuario,
         tipocategoria: tipo,
       }),
+    refetchOnWindowFocus: false,
   });
   useQuery({
     queryKey: ["mostrar cuentas"],
     queryFn: () => mostrarCuentas({ idusuario: idusuario }),
   });
-
   useQuery({
     queryKey: ["mostrar categorias", { idusuario: idusuario, tipo: tipo }],
     queryFn: () => mostrarCategorias({ idusuario: idusuario, tipo: tipo }),

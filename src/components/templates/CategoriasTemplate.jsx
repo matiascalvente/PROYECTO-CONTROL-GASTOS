@@ -11,7 +11,7 @@ import {
   TablaCategorias,
   RegistrarCategorias,
   Lottieanimacion,
-} from "../../index"; 
+} from "../../index";
 import { useState } from "react";
 import vacioverde from "../../assets/vacioverde.json";
 import vaciorojo from "../../assets/vaciorojo.json";
@@ -101,6 +101,7 @@ export function CategoriasTemplate({ data }) {
             animacion={tipo == "i" ? vacioverde : vaciorojo}
           />
         )}
+
         <TablaCategorias
           data={data}
           SetopenRegistro={SetopenRegistro}
