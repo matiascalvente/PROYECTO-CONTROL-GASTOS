@@ -5,84 +5,136 @@ export function LoginTemplate() {
 
   return (
     <Container imgfondo={v.imagenfondo}>
-      <div className="contentCard">
+      <LoginCard>
         <span className="version">versión 1.0</span>
-        <div className="contentImg">
-          <img src={v.logo} />
-        </div>
-        <Titulo>Cerdyn</Titulo>
-        <p className="frase">Toma el control de tus 💵gastos e 💰ingresos</p>
-        <ContainerBtn>
-          <Btnsave
-            titulo="Iniciar con google"
-            icono={<v.iconogoogle />}
-            bgcolor={v.colorSecundario}
-            funcion={signInWithGoogle}
-          />
-        </ContainerBtn>
-      </div>
+        <LogoContainer>
+          <img src={v.logo} alt="FinTrack Logo" className="logo" />
+        </LogoContainer>
+        <Titulo>FinTrack</Titulo>
+        <Subtitulo>Toma el control de tus gastos e ingresos</Subtitulo>
+        <GoogleButton
+          titulo="Iniciar con Google"
+          icono={<v.iconogoogle />}
+          bgcolor={v.colorSecundario}
+          funcion={signInWithGoogle}
+        />
+      </LoginCard>
     </Container>
   );
 }
+
 const Container = styled.div`
   background-image: url(${(props) => props.imgfondo});
-  background-repeat: no-repeat;
+  background-position: center;
   background-size: cover;
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: rgba(255, 255, 255, 0.87);
+  padding: 20px;
+`;
+
+const LoginCard = styled.div`
+  background: rgba(19, 19, 19, 0.9);
+  backdrop-filter: blur(10px);
+  border-radius: 24px;
+  gap: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
   text-align: center;
-  .contentCard {
-    background-color: #131313;
-    border-radius: 20px;
-    gap: 30px;
-    display: flex;
-    flex-direction: column;
+  width: 100%;
+  max-width: 450px;
+
+  .version {
+    color: #727272;
+    font-size: 0.8rem;
+    align-self: flex-start;
+    margin-bottom: -10px;
+  }
+
+  @media (max-width: 768px) {
+    padding: 30px;
+    max-width: 90%;
+  }
+
+  @media (max-width: 480px) {
     padding: 20px;
-    margin: 20px;
-    box-shadow: 8px 5px 18px 3px rgba(0, 0, 0, 0.35);
-    justify-content: center;
-    width: auto;
-    height: 80%;
-    .version {
-      color: #727272;
-      text-align: start;
-    }
-    .contentImg {
-      width: 100%;
-      display: flex;
-      justify-content: center;
+    max-width: 16%;
+  }
+`;
 
-      img {
-        width: 40%;
+const LogoContainer = styled.div`
+  width: 120px;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-        animation: flotar 1.5s ease-in-out infinite alternate;
-      }
-    }
-    .frase {
-      color: #909090;
-      font-size: 1.2rem;
+  .logo {
+    width: 170%;
+    height: auto;
+    animation: flotar 2s ease-in-out infinite alternate;
+
+    @media (max-width: 480px) {
+      width: 80%;
     }
   }
+
   @keyframes flotar {
     0% {
-      transform: translate(0, 0px);
-    }
-    50% {
-      transform: translate(0, 15px);
+      transform: translateY(0);
     }
     100% {
-      transform: translate(0, -0px);
+      transform: translateY(-15px);
     }
   }
 `;
-const Titulo = styled.span`
-  font-size: 5rem;
+const Titulo = styled.h1`
+  font-size: 3.5rem;
   font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+  background: linear-gradient(90deg, #ffffff, #dddddd);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  @media (max-width: 768px) {
+    font-size: 2.8rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 2.2rem;
+  }
 `;
-const ContainerBtn = styled.div`
-  display: flex;
-  justify-content: center;
+
+const Subtitulo = styled.p`
+  color: #a0a0a0;
+  font-size: 1.1rem;
+  margin: 0;
+  line-height: 1.5;
+  max-width: 300px;
+
+  @media (max-width: 480px) {
+    font-size: 1rem;
+  }
+`;
+
+const GoogleButton = styled(Btnsave)`
+  width: 100%;
+  max-width: 280px;
+  margin-top: 10px;
+  transition: transform 0.2s, box-shadow 0.2s;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+
+  @media (max-width: 480px) {
+    max-width: 100%;
+  }
 `;

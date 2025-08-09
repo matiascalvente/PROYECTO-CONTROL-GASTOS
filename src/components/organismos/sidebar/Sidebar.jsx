@@ -14,10 +14,12 @@ export function Sidebar({ state, setState }) {
       </span>
       <Container $isopen={state.toString()} className={state ? "active" : ""}>
         <div className="Logocontent">
-          <div className="imgcontent">
-            <img src={v.logo} />
-          </div>
-          <h2>Cerdyn</h2>
+          {!state && (
+            <div className="imgcontent">
+              <img src={v.logo} alt="Logo FinTrack" />
+            </div>
+          )}
+          {state && <h2>FinTrack</h2>}
         </div>
         {LinksArray.map(({ icon, label, to }) => (
           <div
@@ -92,7 +94,7 @@ const Container = styled.div`
       display: flex;
       justify-content: center;
       align-items: center;
-      width: 30px;
+      width: 40px;
       cursor: pointer;
       transition: 0.3s ease;
       transform: ${({ $isopen }) =>
@@ -100,22 +102,11 @@ const Container = styled.div`
         rotate(${({ theme }) => theme.logorotate});
       img {
         width: 100%;
-        animation: flotar 1.7s ease-in-out infinite alternate;
+        //animation: flotar 1.7s ease-in-out infinite alternate;
       }
     }
     h2 {
       display: ${({ $isopen }) => ($isopen === "true" ? `block` : `none`)};
-    }
-    @keyframes flotar {
-      0% {
-        transform: translate(0, 0px);
-      }
-      50% {
-        transform: translate(0, 4px);
-      }
-      100% {
-        transform: translate(0, -0px);
-      }
     }
   }
   .LinkContainer {

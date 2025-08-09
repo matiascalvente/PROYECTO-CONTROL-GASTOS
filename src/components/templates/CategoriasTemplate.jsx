@@ -15,6 +15,7 @@ import {
 import { useState } from "react";
 import vacioverde from "../../assets/vacioverde.json";
 import vaciorojo from "../../assets/vaciorojo.json";
+
 export function CategoriasTemplate({ data }) {
   const [openRegistro, SetopenRegistro] = useState(false);
   const [accion, setAccion] = useState("");
@@ -23,6 +24,7 @@ export function CategoriasTemplate({ data }) {
   const [stateTipo, setStateTipo] = useState(false);
   const { colorCategoria, tituloBtnDes, bgCategoria, setTipo, tipo } =
     useOperaciones();
+
   function cambiarTipo(p) {
     setTipo(p);
     setStateTipo(!stateTipo);
@@ -33,19 +35,23 @@ export function CategoriasTemplate({ data }) {
     setStateTipo(false);
     setState(false);
   }
+
   function openTipo() {
     setStateTipo(!stateTipo);
     setState(false);
   }
+
   function openUser() {
     setState(!state);
     setStateTipo(false);
   }
+
   function nuevoRegistro() {
     SetopenRegistro(!openRegistro);
     setAccion("Nuevo");
     setdataSelect([]);
   }
+
   return (
     <Container onClick={cerrarDesplegables}>
       {openRegistro && (
@@ -62,11 +68,7 @@ export function CategoriasTemplate({ data }) {
 
       <section className="tipo">
         <ContentFiltros>
-          <div
-            onClick={(e) => {
-              e.stopPropagation();
-            }}
-          >
+          <div onClick={(e) => e.stopPropagation()}>
             <Btndesplegable
               textcolor={colorCategoria}
               bgcolor={bgCategoria}
@@ -83,35 +85,53 @@ export function CategoriasTemplate({ data }) {
           </div>
         </ContentFiltros>
       </section>
+
       <section className="area2">
         <ContentFiltro>
-          <Btnfiltro
-            funcion={nuevoRegistro}
+          <StyledButton
+            onClick={nuevoRegistro}
             bgcolor={bgCategoria}
             textcolor={colorCategoria}
-            icono={<v.agregar />}
-          />
+          >
+            <v.agregar />
+            <span>Nueva categoría</span>
+          </StyledButton>
         </ContentFiltro>
       </section>
-      <section className="main">
-        {data.length == 0 && (
-          <Lottieanimacion
-            alto="300"
-            ancho="300"
-            animacion={tipo == "i" ? vacioverde : vaciorojo}
-          />
-        )}
 
-        <TablaCategorias
-          data={data}
-          SetopenRegistro={SetopenRegistro}
-          setdataSelect={setdataSelect}
-          setAccion={setAccion}
-        />
+      <section className="main">
+        {data.length === 0 ? (
+          <EmptyStateContainer>
+            <Lottieanimacion
+              alto={250}
+              ancho={250}
+              animacion={tipo === "i" ? vacioverde : vaciorojo}
+            />
+            <EmptyStateText>
+              {tipo === "i"
+                ? "No hay categorías de ingresos"
+                : "No hay categorías de gastos"}
+            </EmptyStateText>
+            <EmptyStateSubtext>
+              Presiona el botón "Nueva categoría" para comenzar
+            </EmptyStateSubtext>
+          </EmptyStateContainer>
+        ) : (
+          <TableContainer>
+            <TablaCategorias
+              data={data}
+              SetopenRegistro={SetopenRegistro}
+              setdataSelect={setdataSelect}
+              setAccion={setAccion}
+            />
+          </TableContainer>
+        )}
       </section>
     </Container>
   );
 }
+
+// Estilos mejorados
 const Container = styled.div`
   min-height: 100vh;
   padding: 15px;
@@ -124,32 +144,108 @@ const Container = styled.div`
     "tipo" 100px
     "area2" 50px
     "main" auto;
+  transition: all 0.3s ease;
 
   .header {
     grid-area: header;
-    /* background-color: rgba(103, 93, 241, 0.14); */
     display: flex;
     align-items: center;
   }
+
   .tipo {
     grid-area: tipo;
-    /* background-color: rgba(229, 67, 26, 0.14); */
     display: flex;
     align-items: center;
   }
+
   .area2 {
     grid-area: area2;
-    /* background-color: rgba(77, 237, 106, 0.14); */
     display: flex;
     align-items: center;
-    justify-content: end;
+    justify-content: flex-end;
   }
+
   .main {
     grid-area: main;
-    /* background-color: rgba(179, 46, 241, 0.14); */
+  }
+
+  @media (max-width: 768px) {
+    grid-template:
+      "header" 80px
+      "tipo" 80px
+      "area2" 60px
+      "main" auto;
+    padding: 10px;
   }
 `;
+
 const ContentFiltro = styled.div`
   display: flex;
   flex-wrap: wrap;
+`;
+
+const StyledButton = styled.button`
+  background: ${({ bgcolor }) => bgcolor};
+  color: ${({ textcolor }) => textcolor};
+  border: none;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+
+  span {
+    margin-left: 8px;
+  }
+`;
+
+const EmptyStateContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 60vh;
+  gap: 20px;
+  text-align: center;
+  padding: 20px;
+`;
+
+const EmptyStateText = styled.h3`
+  font-size: 1.5rem;
+  color: ${({ theme }) => theme.text};
+  margin-top: 20px;
+  font-weight: 600;
+`;
+
+const EmptyStateSubtext = styled.p`
+  font-size: 1rem;
+  color: ${({ theme }) => theme.textSecondary};
+  margin-bottom: 20px;
+  max-width: 400px;
+  line-height: 1.5;
+`;
+
+const TableContainer = styled.div`
+  background: ${({ theme }) => theme.bg1};
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+
+  @media (max-width: 768px) {
+    padding: 10px;
+  }
 `;

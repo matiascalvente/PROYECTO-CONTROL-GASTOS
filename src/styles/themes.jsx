@@ -1,6 +1,6 @@
-export const Light = {
+export const Claro = {
   rgbafondoanimado: "rgba(102, 102, 102, 0.2)",
-  body: "#fff",
+  body: "rgb(236, 236, 236)",
   text: "#202020",
   bodyRgba: "255, 255, 255",
   textRgba: "32,32,32",
@@ -34,7 +34,7 @@ export const Light = {
   colorSubtitle: "#2c2c2c",
   colorScroll: "#cac9ca",
 };
-export const Dark = {
+export const Oscuro = {
   rgbafondoanimado: "rgba(198, 198, 198, 0.2)",
   bgtgderecha: "#21252B",
   body: "#202020",

@@ -2,7 +2,11 @@ import Swal from "sweetalert2";
 import { supabase, ObtenerIdAuthSupabase } from "../index";
 export const InsertarUsuarios = async (p) => {
   try {
-    const { data } = await supabase.from("usuarios").insert(p).select();
+    const { data, error } = await supabase
+      .from("usuarios")
+      .upsert(p, { onConflict: ["idauth_supabase"] }) // Asegurate de reemplazar con la columna que es UNIQUE
+      .select();
+
     return data;
   } catch (error) {}
 };

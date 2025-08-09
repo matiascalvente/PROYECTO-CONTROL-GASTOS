@@ -28,19 +28,16 @@ export function CardEliminarData() {
     <Container>
       <h2>Resetear todo</h2>
       <span>
-        🐽ADVERTENCIA!: *esta acción es irreversible, una vez ejecutada se
+        ADVERTENCIA!: *esta acción es irreversible, una vez ejecutada se
         eliminaran todos tus registros de movimientos incluso las categorias
         registradas. <br />
         *Se reseteara tambien los saldos acumulados en tus cuentas.
       </span>
       <Btnsave
         titulo="resetear"
-        bgcolor="rgba(247, 92, 92, 0.87)"
+        bgcolor="rgba(255, 158, 158, 0.87)"
         funcion={eliminar}
       />
-      <div className="contentImg">
-        <img src={v.logo} />
-      </div>
     </Container>
   );
 }
@@ -69,28 +66,5 @@ const Container = styled.div`
   span {
     color: rgba(251, 82, 82, 0.67);
     font-size: 120%;
-  }
-  .contentImg {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    width: 20%;
-    opacity: 0.18;
-    margin: 30px;
-    img {
-      width: 100%;
-      animation: flotar 1.7s ease-in-out infinite alternate;
-    }
-  }
-  @keyframes flotar {
-    0% {
-      transform: translate(0, 0px);
-    }
-    50% {
-      transform: translate(0, 10px);
-    }
-    100% {
-      transform: translate(0, -0px);
-    }
   }
 `;

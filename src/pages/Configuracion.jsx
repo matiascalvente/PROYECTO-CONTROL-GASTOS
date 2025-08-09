@@ -1,5 +1,6 @@
 import styled from "styled-components";
-import { ConfiguracionTemplate, Fondo1 } from "../index";
+import { ConfiguracionTemplate } from "../index";
+
 export function Configuracion() {
   return (
     <Container>
@@ -7,6 +8,8 @@ export function Configuracion() {
     </Container>
   );
 }
+
 const Container = styled.main`
   height: 100vh;
+  background: ${({ theme }) => theme.bgtotal};
 `;

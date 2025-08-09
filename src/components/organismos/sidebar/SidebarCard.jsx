@@ -1,6 +1,12 @@
 import styled from "styled-components";
 import { v, Btnsave } from "../../../index";
+
 export function SidebarCard() {
+  const handleContactClick = () => {
+    window.location.href =
+      "mailto:matiascalvente03@gmail.com?subject=Consulta sobre la aplicación&body=Hola Matías, ";
+  };
+
   return (
     <Container>
       <span className="icon">{<v.iconoayuda />}</span>
@@ -11,14 +17,15 @@ export function SidebarCard() {
         <div className="contentBtn">
           <Btnsave
             titulo="Contactar"
-            bgcolor="#f8f2fd"
-            url="https://t.me/htmlycss369"
+            bgcolor="#a7a7a7"
+            funcion={handleContactClick}
           />
         </div>
       </div>
     </Container>
   );
 }
+
 const Container = styled.div`
   width: 100%;
   padding: 1rem;
@@ -65,11 +72,12 @@ const Container = styled.div`
       margin-top: 1rem;
       padding: 1rem 0;
       font-weight: 800;
-      color: #000;
+      color: #ffffff;
     }
     .contentBtn {
       position: relative;
-      margin-left: -8px;
+      display: flex;
+      justify-content: center;
     }
   }
 `;

@@ -2,8 +2,8 @@ import {
   MyRoutes,
   Sidebar,
   Device,
-  Light,
-  Dark,
+  Claro,
+  Oscuro,
   AuthContextProvider,
   Menuambur,
   useUsuariosStore,
@@ -23,8 +23,8 @@ function App() {
 
   const { pathname } = useLocation();
   // const [theme, setTheme] = useState("dark");
-  const theme = datausuarios?.tema === "0" ? "light" : "dark";
-  const themeStyle = theme === "light" ? Light : Dark;
+  const theme = datausuarios?.tema === "0" ? "claro" : "oscuro";
+  const themeStyle = theme === "claro" ? Claro : Oscuro;
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const { isLoading, error } = useQuery({
     queryKey: ["mostrar usuarios"],

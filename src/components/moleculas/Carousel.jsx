@@ -25,7 +25,7 @@ export function Carousel() {
     <Container>
       <Swiper
         // install Swiper modules
-        autoplay={{ delay: 1500, disableOnInteraction: false }}
+        autoplay={{ delay: 2300, disableOnInteraction: false }}
         modules={[
           EffectCards,
           Navigation,

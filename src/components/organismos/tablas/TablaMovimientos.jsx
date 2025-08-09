@@ -25,7 +25,7 @@ export function TablaMovimientos({
   const { eliminarMovimiento } = useMovimientosStore();
   function eliminar(p) {
     Swal.fire({
-      title: "¿Estás seguro(a)(e)?",
+      title: "¿Estás seguro(a)?",
       text: "Una vez eliminado, ¡no podrá recuperar este registro!",
       icon: "warning",
       showCancelButton: true,
@@ -63,9 +63,9 @@ export function TablaMovimientos({
               return (
                 <tr key={item.id}>
                   <th scope="row">
-                    <Situacion
-                      $bgcolor={item.estado == "1" ? "#69e673" : "#b3b3b3"}
-                    ></Situacion>
+                    <Situacion $pagado={item.estado == "1"}>
+                      {item.estado == "1" ? "Pagado" : "Pendiente"}
+                    </Situacion>
                   </th>
                   <td data-title="Fecha">{item.fecha}</td>
                   <td data-title="Descripcion">{item.descripcion}</td>
@@ -89,9 +89,13 @@ export function TablaMovimientos({
   );
 }
 const Container = styled.div`
-  position: relative;
+  width: 100%;
+  overflow-x: auto;
+  background: ${({ theme }) => theme.bg3};
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 
-  margin: 5% 3%;
   @media (min-width: ${v.bpbart}) {
     margin: 2%;
   }
@@ -241,11 +245,5 @@ const Colorcontent = styled.div`
 const Situacion = styled.div`
   display: flex;
   justify-content: center;
-  &::before {
-    content: "";
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background-color: ${(props) => props.$bgcolor};
-  }
+  color: ${({ $pagado, theme }) => ($pagado ? theme.success : theme.text2)};
 `;
