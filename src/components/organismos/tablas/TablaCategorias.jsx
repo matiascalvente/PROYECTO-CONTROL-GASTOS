@@ -144,7 +144,8 @@ export function TablaCategorias({
 const PremiumContainer = styled.div`
   position: relative;
   margin: 2em auto;
-  max-width: ${v.bphomer};
+  max-width: 950px;
+  //max-width: ${v.bphomer};
   background: ${({ theme }) => theme.bg2};
   border-radius: 16px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);

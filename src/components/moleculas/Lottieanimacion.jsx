@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Lottie from "react-lottie";
+import Lottie from "lottie-react";
 export function Lottieanimacion({ alto, ancho, animacion }) {
   const defaultOptions = {
     loop: true,

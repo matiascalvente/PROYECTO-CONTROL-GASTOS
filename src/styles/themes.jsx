@@ -59,7 +59,7 @@ export const Oscuro = {
   bg3: "#2C2C2E",
   primary: "rgb(52, 131, 235)",
   bg4: "#4E4E50",
-  bg5: "#BF94FF",
+  bg5: "#b27bff",
   bgtotal: "#1C1C1E",
   colorToggle: "rgb(52, 131, 235)",
   translateToggle: "26px",

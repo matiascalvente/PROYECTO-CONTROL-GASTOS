@@ -76,8 +76,7 @@ const Container = styled.div`
     }
     .contentBtn {
       position: relative;
-      display: flex;
-      justify-content: center;
+      margin-left: -8px;
     }
   }
 `;

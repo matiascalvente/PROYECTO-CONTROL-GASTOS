@@ -188,9 +188,10 @@ const StyledButton = styled.button`
   background: ${({ bgcolor }) => bgcolor};
   color: ${({ textcolor }) => textcolor};
   border: none;
-  padding: 12px 20px;
+  padding: 16px 28px;
   border-radius: 8px;
   font-weight: 600;
+  font-size: 14px;
   display: flex;
   align-items: center;
   gap: 8px;
