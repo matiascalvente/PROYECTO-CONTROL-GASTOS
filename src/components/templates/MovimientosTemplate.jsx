@@ -162,7 +162,12 @@ export function MovimientosTemplate() {
         />
       </section>
       <section className="main">
-        <TablaMovimientos data={datamovimientos} />
+        <TablaMovimientos
+          data={datamovimientos}
+          SetopenRegistro={SetopenRegistro} 
+          setdataSelect={setdataSelect}
+          setAccion={setAccion}
+        />
       </section>
     </Container>
   );
