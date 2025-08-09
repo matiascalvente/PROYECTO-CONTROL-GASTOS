@@ -7,7 +7,7 @@ import { BrowserRouter } from "react-router-dom";
 const queryClient = new QueryClient();
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename="/control-gastos">
       <QueryClientProvider client={queryClient}>
         <App />
       </QueryClientProvider>
